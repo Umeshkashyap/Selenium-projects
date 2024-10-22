@@ -36,7 +36,7 @@ login.click()
 # Optional: wait for 5 seconds to observe the browser interaction
 WebDriverWait(driver, 5)
 
-time.sleep(5)
+time.sleep(10)
 
 # Close the browser
 driver.quit()
