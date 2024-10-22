@@ -1,28 +1,42 @@
-<<<<<<< HEAD
-from selenium import webdriver
-=======
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
-from selenium.webdriver import ActionChains
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 import time
 
-serv_obj=Service("C:\drivers\chromedriver-win64\chromedriver.exe")
-driver=webdriver.Chrome(service=serv_obj)
-driver.get("https://ayushman.nwaredev.com/")
+# Set up Chrome driver
+serv_obj = Service("C:/drivers/chromedriver-win64/chromedriver.exe")
+driver = webdriver.Chrome(service=serv_obj)
+
+# Open the OrangeHRM website
+driver.get("https://opensource-demo.orangehrmlive.com/")
+
+# Wait until the username input field is present
+userName = WebDriverWait(driver, 10).until(
+    EC.presence_of_element_located((By.XPATH, "//input[@name='username']"))
+)
+userName.send_keys("Admin")
+
+password = WebDriverWait(driver, 10).until(
+    EC.presence_of_element_located((By.XPATH, "//input[@placeholder='Password']"))
+)
+
+# Enter the password "Admin"
+password.send_keys("admin123")
+
+login= WebDriverWait(driver, 10).until(
+    EC.presence_of_element_located((By.XPATH, "//button[@type='submit']"))
+)
 
 
-driver.find_element(By.XPATH,"//input[@id='email']").send_keys("admin@gmail.com")
-driver.find_element(By.XPATH,"//input[@id='password']").send_keys("password")
+login.click()
 
-driver.find_element(By.XPATH,"//button[normalize-space()='Log in']").click()
 
-driver.find_element(By.XPATH,"//a[normalize-space()='Master Hospitals']").click()
-driver.find_element(By.XPATH,"//a[@class='btn btn-primary']").click()
+# Optional: wait for 5 seconds to observe the browser interaction
+WebDriverWait(driver, 5)
 
-driver.find_element(By.XPATH,"//input[@id='title']").send_keys("Testing")
-fileinput=driver.find_element(By.XPATH,"//input[@id='customFile']").click()
+time.sleep(5)
 
-fileinput
-time.sleep(10)
->>>>>>> 5181629 (add details)
+# Close the browser
+driver.quit()
