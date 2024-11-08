@@ -6,27 +6,29 @@ from selenium.webdriver.support import expected_conditions as EC
 import time
 
 # Set up Chrome driver
-serv_obj = Service("C:/drivers/chromedriver-win64/chromedriver.exe")
+serv_obj = Service("C:\drivers\chromedriver-win64 (2)\chromedriver-win64/chromedriver.exe")
 driver = webdriver.Chrome(service=serv_obj)
 
 # Open the OrangeHRM website
-driver.get("https://opensource-demo.orangehrmlive.com/")
-
+driver.get("http://192.168.1.150/dolphin/public/")
 # Wait until the username input field is present
-userName = WebDriverWait(driver, 10).until(
-    EC.presence_of_element_located((By.XPATH, "//input[@name='username']"))
-)
-userName.send_keys("Admin")
 
-password = WebDriverWait(driver, 10).until(
-    EC.presence_of_element_located((By.XPATH, "//input[@placeholder='Password']"))
+username="admin"
+password="1234"
+userName = WebDriverWait(driver, 10).until(
+    EC.presence_of_element_located((By.XPATH, "//input[@id='email']"))
+)
+userName.send_keys(username)
+
+passWord = WebDriverWait(driver, 10).until(
+    EC.presence_of_element_located((By.XPATH, "//input[@id='password']"))
 )
 
 # Enter the password "Admin"
-password.send_keys("admin123")
+passWord.send_keys(password)
 
 login= WebDriverWait(driver, 10).until(
-    EC.presence_of_element_located((By.XPATH, "//button[@type='submit']"))
+    EC.presence_of_element_located((By.XPATH, "//button[@id='login-btn']"))
 )
 
 
