@@ -8,9 +8,9 @@ import time
 # Set up Chrome driver
 serv_obj = Service("C:\\drivers\\chromedriver-win64 (2)\\chromedriver-win64\\chromedriver.exe")
 driver = webdriver.Chrome(service=serv_obj)
-waitTime=WebDriverWait(driver,10)
+waitTime = WebDriverWait(driver, 10)
 
-# Open the OrangeHRM website
+# Open the Dolphin website
 driver.get("http://192.168.1.150/dolphin/public/")
 
 username = "admin"
@@ -46,29 +46,36 @@ ticket = waitTime.until(
 )
 ticket.click()
 
-
-edit= waitTime.until(
+# Wait until the 'Edit' button is clickable and click it
+edit = waitTime.until(
     EC.element_to_be_clickable((By.XPATH, "//tbody/tr[3]/td[4]/button[3]"))
 )
 edit.click()
-check= waitTime.until(
+
+# Wait until the specific checkbox element is clickable and click it
+check = waitTime.until(
     EC.element_to_be_clickable((By.XPATH, "//input[@id='location_name-l01']"))
 )
 check.click()
 
-checkBoxes=driver.find_elements(By.XPATH,"//input[@type='checkbox' or @class='ticket_options']")
-print(len(checkBoxes))
+# Find all checkboxes and count them
+checkBoxes = driver.find_elements(By.XPATH, "//input[@type='checkbox' or @class='ticket_options']")
+print("Number of checkboxes:", len(checkBoxes))
 
+# Try to click each checkbox, using JavaScript as a fallback if regular click fails
 for checkbox in checkBoxes:
-    print(checkbox)
-
-
-
+    try:
+        # Attempt to click the checkbox
+        if checkbox.is_selected():  #check is already selected
+            pass
+        else:
+            checkbox.click()
+    except:
+        # If the checkbox is not interactable, use JavaScript to click it
+        driver.execute_script("arguments[0].click();", checkbox)
 
 # Optional: wait for 5 seconds to observe the browser interaction
 time.sleep(5)
-
-
 
 # Close the browser
 driver.quit()
