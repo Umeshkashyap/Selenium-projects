@@ -22,5 +22,5 @@ print(len(links))
 
 for link in links:
     print(link.text)
-    if
+
 
