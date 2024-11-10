@@ -27,21 +27,31 @@ dropDown=Select(driver.find_element(By.XPATH,"//select[@id='Skills']"))
 
 #capture all dropDown option using select inbuit function
 
-allOptions=dropDown.options
+#allOptions=dropDown.options
 # print(len(allOptions))
 #
 # for opt in allOptions:
 #     print(opt.text)
 
 #select option
+#
+# for opt in allOptions:
+#     print(opt.text)
+#     if opt.text=="Microsoft Outlook":
+#         opt.click()
+#         break
+# time.sleep(120)
 
-for opt in allOptions:
+
+# Capture and select Dropdown options without using inbuilt functions using select id
+
+allOPt=driver.find_elements(By.XPATH,"//select[@id='Skills']/option")
+print(len(allOPt))
+
+for opt in allOPt:
     print(opt.text)
-    if opt.text=="Microsoft Outlook":
+    if opt.text=="Windows":
         opt.click()
         break
-time.sleep(120)
 
-
-
-
+time.sleep(10)
