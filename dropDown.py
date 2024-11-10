@@ -20,7 +20,28 @@ dropDown=Select(driver.find_element(By.XPATH,"//select[@id='Skills']"))
 
 # select options from the dropDown using inbuit functions
 
-#dropDown.select_by_visible_text("CSS")
-#dropDown.select_by_index(9)
-dropDown.select_by_value("Spreadsheet")
-# time.sleep(10)
+# #dropDown.select_by_visible_text("CSS")
+# #dropDown.select_by_index(9)
+# dropDown.select_by_value("Spreadsheet")
+
+
+#capture all dropDown option using select inbuit function
+
+allOptions=dropDown.options
+# print(len(allOptions))
+#
+# for opt in allOptions:
+#     print(opt.text)
+
+#select option
+
+for opt in allOptions:
+    print(opt.text)
+    if opt.text=="Microsoft Outlook":
+        opt.click()
+        break
+time.sleep(120)
+
+
+
+
