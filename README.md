@@ -1,1 +1,1 @@
-Test script for diffrent demo project
+Test automation script for different demo project
