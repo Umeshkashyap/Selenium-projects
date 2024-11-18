@@ -75,3 +75,4 @@ txt = driver.find_element(By.XPATH, "//p[@id='demo1']").text
 print(txt)  # Print the result text
 
 time.sleep(5)  # Wait to observe changes before quitting (optional)
+
