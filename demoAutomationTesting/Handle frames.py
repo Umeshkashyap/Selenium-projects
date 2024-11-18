@@ -35,12 +35,4 @@ button2.click()
 
 # driver.switch_to.default_content()
 
-time.sleep(3)
-
-# driver.switch_to.frame("bottom-iframe")
-# frame2=driver.find_element(By.XPATH,"/html/body/header/nav/button")
-# frame2.click()
-# driver.switch_to.default_content()
-#
-# time.sleep(10)
-# https://www.globalsqa.com/demo-site/frames-and-windows/#iFrame
+driver.quit()
