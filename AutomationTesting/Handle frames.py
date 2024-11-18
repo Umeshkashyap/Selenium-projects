@@ -32,7 +32,6 @@ button2= myWait.until(
 time.sleep(10)
 button2.click()
 # print("button2 clicked")
-
-# driver.switch_to.default_content()
+driver.switch_to.default_content()
 
 driver.quit()
