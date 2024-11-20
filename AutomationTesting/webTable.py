@@ -15,7 +15,7 @@ driver.maximize_window()
 
 tableRow=len(driver.find_elements(By.XPATH,"//table[@name='BookTable']//tr"))
 print(tableRow)
-tableColumn=len(driver.find_elements(By.XPATH,"//table[@name='BookTable']//tr"))
+tableColumn=len(driver.find_elements(By.XPATH,"//table[@name='BookTable']//tr[1]/th"))
 print(tableColumn)
 
 # 1. select and print specific data
@@ -26,9 +26,7 @@ print(tableColumn)
 #2. print all the data of the table
 
 for r in range(2,tableRow+1):
-    print("test r")
     for c in range(1,tableColumn+1):
-        print("test c")
         data=driver.find_element(By.XPATH, "//table[@name='BookTable']/tbody/tr["+str(r)+"]/td["+str(c)+"]").text
-        print("test data")
-        print(data)
+        print(data,end="\t")  #print data in a same row
+    print()  #print data in next line after 1 loop is complete
