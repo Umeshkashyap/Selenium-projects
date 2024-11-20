@@ -25,8 +25,20 @@ print(tableColumn)
 
 #2. print all the data of the table
 
+# for r in range(2,tableRow+1):
+#     for c in range(1,tableColumn+1):
+#         data=driver.find_element(By.XPATH, "//table[@name='BookTable']/tbody/tr["+str(r)+"]/td["+str(c)+"]").text
+#         print(data,end="\t")  #print data in a same row
+#     print()  #print data in next line after 1 loop is complete
+
+#3. print selected data based on the condition
+
 for r in range(2,tableRow+1):
-    for c in range(1,tableColumn+1):
-        data=driver.find_element(By.XPATH, "//table[@name='BookTable']/tbody/tr["+str(r)+"]/td["+str(c)+"]").text
-        print(data,end="\t")  #print data in a same row
-    print()  #print data in next line after 1 loop is complete
+    bookname=driver.find_element(By.XPATH, "//table[@name='BookTable']/tbody/tr["+str(r)+"]/td[1]").text
+    print("test book")
+    if bookname=="Master In Selenium":
+        print("test if")
+        price=driver.find_element(By.XPATH,"//table[@name='BookTable']/tbody/tr["+str(r)+"]/td[4]").text
+        print(bookname,price)
+        break
+driver.quit()
