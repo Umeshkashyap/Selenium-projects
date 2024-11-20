@@ -13,4 +13,3 @@ driver=webdriver.Chrome(service=serv_obj)
 driver.get("https://admin:admin@the-internet.herokuapp.com/basic_auth")  #by pass the authenticated popup by injecting detail in url
 driver.maximize_window()
 time.sleep(5)
-s
