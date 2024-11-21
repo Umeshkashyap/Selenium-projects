@@ -32,10 +32,21 @@ adminBtn.click()
 # table=myWait.until(EC.presence_of_element_located((By.XPATH,"//div[@class='orangehrm-container']")))
 # print("test sucess")
 
-tableRow=
+tableRow=driver.find_element(By.XPATH,"//div[2][@class='oxd-table-card']").text
 
-tableColumn=myWait.until(EC.presence_of_element_located((By.XPATH,"//div[@class='oxd-table-body']//div[1]//div//div[5]")))
-print(tableColumn.text)
+print(tableRow)
+
+
+# for r in tableRow:
+#     data=driver.find_element(By.XPATH,"//div["+str(r)+"]@class='oxd-table-card']//div[5]")
+#     # #print(data)
+
+
+
+
+
+# tableColumn=myWait.until(EC.presence_of_element_located((By.XPATH,"//div[@class='oxd-table-body']//div[1]//div//div[5]")))
+# print(tableColumn.text)
 
 
 
