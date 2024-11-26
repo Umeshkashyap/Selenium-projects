@@ -38,11 +38,15 @@ def edge_browser():
 def firefox_browser():
     from selenium.webdriver.firefox.service import Service
     serv_obj = Service("C:\drivers\geckodriver-v0.35.0-win-aarch64\geckodriver.exe")
-    driver = webdriver.Firefox(service=serv_obj)
     # Download file in desired location
-    preferences = {"download.default_directory": location}
-    ops = webdriver.EdgeOptions()
-    ops.add_experimental_option("prefs", preferences)
+    ops = webdriver.FirefoxOptions()
+    ops.set_preference("browser.helperApps.neverAsk.saveToDisk","application/msword")
+    ops.set_preference("browser.download.manager.showWhenStarting",False)
+    ops.set_preference("browser.download.folderList",2)
+    ops.set_preference("browser.download.dir",location)
+    driver =webdriver.Firefox(service=serv_obj,options=ops)
+    return driver
+
 
 def block_ads(driver):
     """
@@ -56,7 +60,8 @@ def block_ads(driver):
 
 # Main script execution
 #driver = chrome_browser()
-driver= edge_browser()
+#driver= edge_browser()
+driver=firefox_browser()
 driver.get("https://file-examples.com/index.php/sample-documents-download/sample-doc-download/")
 print("passed")
 driver.maximize_window()
