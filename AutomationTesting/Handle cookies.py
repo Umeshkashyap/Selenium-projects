@@ -2,8 +2,6 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support.select import Select
-from selenium.webdriver.support import expected_conditions as EC
 import time
 import os
 
@@ -15,7 +13,16 @@ myWait = WebDriverWait(driver, 10)
 driver.get("https://www.dummyticket.com/dummy-ticket-for-visa-application/")
 driver.maximize_window()
 
-driver.save_screenshot("C:\\Users\\Admin\\PycharmProjects\\Selenium-projects\\AutomationTesting\\homepage.png")
-print("succes")
+cookies=driver.get_cookies()
+print(len(cookies))
+
+for cookie in cookies:
+    print("Name: ",cookie.get("name"),"Value:",cookie.get("value"))
 
 
+driver.add_cookie({"name":"mycookies","value":"dhhhdhdhdhggg"})
+cook=driver.get_cookies()
+print(len(cook))
+
+
+driver.delete_cookie("mycookies")
