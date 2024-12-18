@@ -42,7 +42,7 @@ def firefox_browser():
     ops = webdriver.FirefoxOptions()
     ops.set_preference("browser.helperApps.neverAsk.saveToDisk","application/msword")
     ops.set_preference("browser.download.manager.showWhenStarting",False)
-    ops.set_preference("browser.download.folderList",2)
+    ops.set_preference("browser.download.folderList",2)  # 2 is for desired location
     ops.set_preference("browser.download.dir",location)
     driver =webdriver.Firefox(service=serv_obj,options=ops)
     return driver
